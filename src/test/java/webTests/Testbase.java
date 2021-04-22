@@ -1,4 +1,7 @@
+package webTests;
+
 import com.codeborne.selenide.Configuration;
+import helpers.AttachmentHelper;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -39,17 +42,17 @@ public class Testbase {
     AttachmentHelper.attachScreenshot("Last screenshot");
     AttachmentHelper.attachPageSource();
    /* if (System.getProperty("browserName").equals("chrome") || System.getProperty("selenide.browser").equals("chrome")) {
-      AttachmentHelper.attachAsText("Browser console logs", AttachmentHelper.getConsoleLogs());
+      helpers.AttachmentHelper.attachAsText("Browser console logs", helpers.AttachmentHelper.getConsoleLogs());
     }*/
     closeWebDriver();
   }
 
- /* @Step("Открываем главную странцу")
+@Step("Открываем главную странцу")
   public void openMainPage() {
     open(BASE_URL);
   }
 
-  @Step("открываем окно поиска")
+/*  @Step("открываем окно поиска")
   public void openSearchWindow() {
     $(".search-button").click();
     $(".searching-input").clear();

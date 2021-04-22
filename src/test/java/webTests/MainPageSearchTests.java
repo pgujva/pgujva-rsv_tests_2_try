@@ -1,21 +1,20 @@
+package webTests;
 
-import com.codeborne.selenide.Configuration;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 
-public class MainPageSearchTests extends Testbase {
+
+public class MainPageSearchTests extends Testbase{
   private final static String PROJECT = "Проект";
   private final static String WEBINAR = "Вебинар";
 
 
   @Test
   @DisplayName("Filter by project")
-  public void projectPageSearchTest() {
+  public void projectMainPageSearchTest() {
     open("https://rsv-test.bizml.ru");
     $(".search-button").click();
     $(".searching-input").clear();
@@ -30,8 +29,8 @@ public class MainPageSearchTests extends Testbase {
 
   @Test
   @DisplayName("Filter by webinar")
-  public void webinarPageSearchTest() {
-    open("https://rsv-test.bizml.ru");
+  public void webinarMainPageSearchTest() {
+    openMainPage();
     $(".search-button").click();
     $(".searching-input").clear();
     $(".searching-input").val(WEBINAR);
