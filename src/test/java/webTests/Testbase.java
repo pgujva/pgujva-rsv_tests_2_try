@@ -76,12 +76,12 @@ public class Testbase {
   }
 
 
-  @Step("Проверка фильтрации по проектам")
+  @Step("Проверка фильтрации по разделу")
   public void checkFirstFilteredItem(String firstItemName) {
     $$(".results.SRWrapper.results").first().shouldHave(text(firstItemName  + "ы"));
   }
 
-  @Step("Проверка,что есть ссылка на раздел Проекты")
+  @Step("Проверка,что есть ссылка на раздел ")
   public void checkLinkSection(String linkText) {
     $(".results-item").shouldHave(text(linkText + "ы" + "\n" + "Перейти на страницу " +  linkText + "ов"));
   }
