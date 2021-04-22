@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 
-public class BaseStepSearchTests extends Testbase {
+public class MainPageSearchTests extends Testbase {
   private final static String PROJECT = "Проект";
   private final static String WEBINAR = "Вебинар";
 
