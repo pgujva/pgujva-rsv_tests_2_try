@@ -4,6 +4,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 
@@ -20,7 +21,8 @@ public class BaseStepSearchTests extends Testbase {
     $(".searching-input").clear();
     $(".searching-input").val(PROJECT);
     $(".searching-switcher").click();
-    $$(".categories-column").filterBy(text(PROJECT + "ы")).first().click();
+    $(".content").$(byText(PROJECT + "ы")).click();
+    $(".content").$(".checked.labeled").shouldHave(text(PROJECT + "ы"));
     $$(".results.SRWrapper.results").first().shouldHave(text(PROJECT + "ы"));
     $(".results-item").shouldHave(text(PROJECT + "ы" + "\n" + "Перейти на страницу проектов"));
 
@@ -34,7 +36,8 @@ public class BaseStepSearchTests extends Testbase {
     $(".searching-input").clear();
     $(".searching-input").val(WEBINAR);
     $(".searching-switcher").click();
-    $$(".categories-column").filterBy(text(WEBINAR + "ы")).first().click();
+    $(".content").$(byText(WEBINAR + "ы")).click();
+    $(".content").$(".checked.labeled").shouldHave(text(WEBINAR + "ы"));
     $$(".results.SRWrapper.results").first().shouldHave(text(WEBINAR + "ы"));
     $(".results-item").shouldHave(text(WEBINAR + "ы" + "\n" + "Перейти на страницу вебинаров"));
 
