@@ -44,7 +44,7 @@ public class Testbase {
     closeWebDriver();
   }
 
-  @Step("Открываем главную странцу")
+ /* @Step("Открываем главную странцу")
   public void openMainPage() {
     open(BASE_URL);
   }
@@ -75,6 +75,6 @@ public class Testbase {
   @Step("Проверка,что работает переход на страницу проектов")
   public void shouldHaveTestLinkTextProject(final String PROJECT) {
     $(".results-item").shouldHave(text(PROJECT + "ы" + "\n" + "Перейти на страницу проектов"));
-  }
+  }*/
 }
 
