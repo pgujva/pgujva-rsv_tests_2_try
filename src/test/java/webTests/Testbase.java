@@ -9,12 +9,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 
 public class Testbase {
   private final static String BASE_URL = "https://rsv-test.bizml.ru/";
- // private static String SelenideBrowser;
+  // private static String SelenideBrowser;
   private static String remoteWebDriver;
 
   @BeforeAll
@@ -34,7 +35,7 @@ public class Testbase {
     remoteWebDriver = System.getProperty("remote.web.driver");
     if (remoteWebDriver != null) {
       Configuration.remote = remoteWebDriver;*/
-    }
+  }
 
 
   @AfterEach
@@ -47,37 +48,52 @@ public class Testbase {
     closeWebDriver();
   }
 
-@Step("Открываем главную странцу")
+  @Step("Открываем главную странцу")
   public void openMainPage() {
     open(BASE_URL);
   }
 
-/*  @Step("открываем окно поиска")
+  @Step("открываем окно поиска")
   public void openSearchWindow() {
     $(".search-button").click();
+  }
+
+  @Step("ввод текста в поиск")
+  public void initSearch(String searchText) {
     $(".searching-input").clear();
+    $(".searching-input").val(searchText);
   }
 
   @Step("выбираем фильтр")
-  public void choseFilter(final String PROJECT) {
-    $(".searching-input").val(PROJECT);
+  public void choseFilter(String filterName) {
     $(".searching-switcher").click();
-    $$(".categories-column").filterBy(text(PROJECT + "ы")).first().click();
+    $(".content").$(byText(filterName + "ы")).click();
   }
 
+  @Step("Проверка что фильтр выбран")
+  public void checkFilterSelected(String filterName) {
+    $(".content").$(".checked.labeled").shouldHave(text(filterName + "ы"));
+  }
+
+
   @Step("Проверка фильтрации по проектам")
-  public void shouldHaveTestProject(final String PROJECT) {
-    $$(".results.SRWrapper.results").first().shouldHave(text(PROJECT + "ы"));
+  public void checkFirstFilteredItem(String firstItemName) {
+    $$(".results.SRWrapper.results").first().shouldHave(text(firstItemName  + "ы"));
   }
 
   @Step("Проверка,что есть ссылка на раздел Проекты")
-  public void shouldHaveTestLinkProject(final String PROJECT) {
-    $(".results-item").shouldHave(text(PROJECT + "ы" + "\n" + "Перейти на страницу проектов"));
+  public void checkLinkSection(String linkText) {
+    $(".results-item").shouldHave(text(linkText + "ы" + "\n" + "Перейти на страницу " +  linkText + "ов"));
   }
 
-  @Step("Проверка,что работает переход на страницу проектов")
-  public void shouldHaveTestLinkTextProject(final String PROJECT) {
-    $(".results-item").shouldHave(text(PROJECT + "ы" + "\n" + "Перейти на страницу проектов"));
-  }*/
+  @Step("Переход в раздел по первый ссылке")
+  protected void goToSectionByFirstLink() {
+    $$(".SRWrapper.results").first().click();
+  }
+
+  @Step("Проверка что открыта верная страница")
+  public void checkPageTitle(String pageTitle) {
+    $(".item.current").shouldHave(text(pageTitle + "ы"));
+  }
 }
 

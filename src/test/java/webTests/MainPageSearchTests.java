@@ -2,12 +2,8 @@ package webTests;
 
 import org.junit.jupiter.api.*;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 
-
-public class MainPageSearchTests extends Testbase{
+public class MainPageSearchTests extends Testbase {
   private final static String PROJECT = "Проект";
   private final static String WEBINAR = "Вебинар";
 
@@ -15,30 +11,30 @@ public class MainPageSearchTests extends Testbase{
   @Test
   @DisplayName("Filter by project")
   public void projectMainPageSearchTest() {
-    open("https://rsv-test.bizml.ru");
-    $(".search-button").click();
-    $(".searching-input").clear();
-    $(".searching-input").val(PROJECT);
-    $(".searching-switcher").click();
-    $(".content").$(byText(PROJECT + "ы")).click();
-    $(".content").$(".checked.labeled").shouldHave(text(PROJECT + "ы"));
-    $$(".results.SRWrapper.results").first().shouldHave(text(PROJECT + "ы"));
-    $(".results-item").shouldHave(text(PROJECT + "ы" + "\n" + "Перейти на страницу проектов"));
-
+    openMainPage();
+    openSearchWindow();
+    initSearch(PROJECT);
+    choseFilter(PROJECT);
+    checkFilterSelected(PROJECT);
+    checkFirstFilteredItem(PROJECT);
+    checkLinkSection(PROJECT);
+    goToSectionByFirstLink();
+    checkPageTitle(PROJECT);
   }
+
 
   @Test
   @DisplayName("Filter by webinar")
   public void webinarMainPageSearchTest() {
     openMainPage();
-    $(".search-button").click();
-    $(".searching-input").clear();
-    $(".searching-input").val(WEBINAR);
-    $(".searching-switcher").click();
-    $(".content").$(byText(WEBINAR + "ы")).click();
-    $(".content").$(".checked.labeled").shouldHave(text(WEBINAR + "ы"));
-    $$(".results.SRWrapper.results").first().shouldHave(text(WEBINAR + "ы"));
-    $(".results-item").shouldHave(text(WEBINAR + "ы" + "\n" + "Перейти на страницу вебинаров"));
+    openSearchWindow();
+    initSearch(WEBINAR);
+    choseFilter(WEBINAR);
+    checkFilterSelected(WEBINAR);
+    checkFirstFilteredItem(WEBINAR);
+    checkLinkSection(WEBINAR);
+    goToSectionByFirstLink();
+    checkPageTitle(WEBINAR);
 
   }
 }
