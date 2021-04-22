@@ -11,7 +11,7 @@ public class BaseStepSearchTests extends Testbase {
   private final static String PROJECT = "Проект";
   private final static String WEBINAR = "Вебинар";
 
-  @Disabled
+
   @Test
   @DisplayName("Filter by project")
   public void projectPageSearchTest() {
@@ -32,7 +32,7 @@ public class BaseStepSearchTests extends Testbase {
     open("https://rsv-test.bizml.ru");
     $(".search-button").click();
     $(".searching-input").clear();
-    $(".searching-input").val(WEBINAR+ "ы");
+    $(".searching-input").val(WEBINAR);
     $(".searching-switcher").click();
     $$(".categories-column").filterBy(text(WEBINAR + "ы")).first().click();
     $$(".results.SRWrapper.results").first().shouldHave(text(WEBINAR + "ы"));
