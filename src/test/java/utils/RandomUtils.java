@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
 
-  private static String emailDomain = "@qa.guru";
+  private static String emailDomain = "@test";
 
   public static String getRandomString(int length) {
     String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";

@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Condition.text;
@@ -20,10 +21,11 @@ public class Testbase {
 
   @BeforeAll
   static void setUp() {
+    Configuration.startMaximized = true;
+    //openMainPage();
     //Запуск браузера локально в selenide
     //System.setProperty("selenide.browser", System.getProperty("browserName"));
     //SelenideBrowser = System.getProperty("selenide.browser");
-    Configuration.startMaximized = true;
     addListener("AllureSelenide", new AllureSelenide());
     //Запуск браузера в контейнере selenoid
    /* DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -35,6 +37,12 @@ public class Testbase {
     remoteWebDriver = System.getProperty("remote.web.driver");
     if (remoteWebDriver != null) {
       Configuration.remote = remoteWebDriver;*/
+
+  }
+
+@BeforeEach
+  void mainPage() {
+    openMainPage();
   }
 
 
@@ -49,7 +57,7 @@ public class Testbase {
   }
 
   @Step("Открываем главную странцу")
-  public void openMainPage() {
+  public static void openMainPage() {
     open(BASE_URL);
   }
 
@@ -78,12 +86,12 @@ public class Testbase {
 
   @Step("Проверка фильтрации по разделу")
   public void checkFirstFilteredItem(String firstItemName) {
-    $$(".results.SRWrapper.results").first().shouldHave(text(firstItemName  + "ы"));
+    $$(".results.SRWrapper.results").first().shouldHave(text(firstItemName + "ы"));
   }
 
   @Step("Проверка,что есть ссылка на раздел ")
   public void checkLinkSection(String linkText) {
-    $(".results-item").shouldHave(text(linkText + "ы" + "\n" + "Перейти на страницу " +  linkText + "ов"));
+    $(".results-item").shouldHave(text(linkText + "ы" + "\n" + "Перейти на страницу " + linkText + "ов"));
   }
 
   @Step("Переход в раздел по первый ссылке")
@@ -95,5 +103,20 @@ public class Testbase {
   public void checkPageTitle(String pageTitle) {
     $(".item.current").shouldHave(text(pageTitle + "ы"));
   }
+
+  public void login() {
+    $(".auth").click();
+    $("#email").click();
+    $("#email").clear();
+    $("#email").val("");
+    $("#password").click();
+    $("#password").clear();
+    $("#password").val("");
+    $("#login-form-submit").click();
+    $(".buttons").shouldHave(text("тест"));
+
+  }
 }
+
+
 

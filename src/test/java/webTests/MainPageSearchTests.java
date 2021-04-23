@@ -12,7 +12,7 @@ public class MainPageSearchTests extends Testbase {
   @Test
   @DisplayName("Filter by project")
   public void projectMainPageSearchTest() {
-    openMainPage();
+    login();
     openSearchWindow();
     initSearch(PROJECT);
     choseFilter(PROJECT);
@@ -27,7 +27,6 @@ public class MainPageSearchTests extends Testbase {
   @Test
   @DisplayName("Filter by webinar")
   public void webinarMainPageSearchTest() {
-    openMainPage();
     openSearchWindow();
     initSearch(WEBINAR);
     choseFilter(WEBINAR);
@@ -36,6 +35,5 @@ public class MainPageSearchTests extends Testbase {
     checkLinkSection(WEBINAR);
     goToSectionByFirstLink();
     checkPageTitle(WEBINAR);
-
   }
 }
