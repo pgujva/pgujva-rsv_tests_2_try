@@ -1,6 +1,7 @@
 package webTests;
 
 import org.junit.jupiter.api.*;
+import utils.RandomUtils;
 
 
 public class MainPageSearchTests extends Testbase {
