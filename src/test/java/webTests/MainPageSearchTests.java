@@ -12,7 +12,7 @@ public class MainPageSearchTests extends Testbase {
   @Test
   @DisplayName("Filter by project")
   public void projectMainPageSearchTest() {
-    login();
+    //login();
     openSearchWindow();
     initSearch(PROJECT);
     choseFilter(PROJECT);

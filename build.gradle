@@ -17,7 +17,7 @@ allure {
     }
 }
 
-compileTestJava {
+tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
@@ -47,3 +47,10 @@ tasks.withType(Test) {
 test {
     useJUnitPlatform()
 }
+
+/*
+task positive_test(type: Test) {
+    useJUnitPlatform {
+        includeTags 'positive'
+    }
+}*/

@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 
 public class Testbase {
-  private final static String BASE_URL = "https://rsv-test.bizml.ru/";
+  private final static String BASE_URL = "https://rsv-demo.bizml.ru/";
   // private static String SelenideBrowser;
   private static String remoteWebDriver;
 
