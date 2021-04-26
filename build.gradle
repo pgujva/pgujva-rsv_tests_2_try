@@ -34,7 +34,7 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured:4.3.3'
 }
 
-tasks.withType(Test) {
+/*tasks.withType(Test) {
     systemProperties(System.getProperties())
     testLogging {
         lifecycle {
@@ -43,7 +43,7 @@ tasks.withType(Test) {
             exceptionFormat "short"
         }
     }
-}
+}*/
 
 test {
     useJUnitPlatform()
