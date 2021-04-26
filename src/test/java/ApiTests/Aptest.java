@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class Apitest {
+public class Aptest {
 
   @Test
   public void firstApiTest() {
