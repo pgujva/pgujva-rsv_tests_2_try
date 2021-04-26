@@ -8,7 +8,7 @@ public class MainPageSearchTests extends Testbase {
   private final static String PROJECT = "Проект";
   private final static String WEBINAR = "Вебинар";
 
-
+  @Tag("positive")
   @Test
   @DisplayName("Filter by project")
   public void projectMainPageSearchTest() {

@@ -21,13 +21,19 @@ public class Testbase {
 
   @BeforeAll
   static void setUp() {
+    addListener("AllureSelenide", new AllureSelenide());
     Configuration.startMaximized = true;
-    //openMainPage();
-    //Запуск браузера локально в selenide
+    //Запуск браузера локально  selenide
     //System.setProperty("selenide.browser", System.getProperty("browserName"));
     //SelenideBrowser = System.getProperty("selenide.browser");
-    addListener("AllureSelenide", new AllureSelenide());
-    //Запуск браузера в контейнере selenoid
+
+
+    //Запуск браузера в контейнере selenoid + java
+    DesiredCapabilities capabilities = new DesiredCapabilities();
+    Configuration.remote = "http://127.0.0.1:4444/wd/hub";
+    capabilities.setCapability("enableVNC", true);
+    Configuration.browserCapabilities = capabilities;
+
    /* DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("browserName", System.getProperty("browserName"));
     capabilities.setCapability("browserVersion", System.getProperty("browserVersion"));
