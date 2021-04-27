@@ -34,7 +34,11 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured:4.3.3'
 }
 
-/*tasks.withType(Test) {
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(Test) {
     systemProperties(System.getProperties())
     testLogging {
         lifecycle {
@@ -43,15 +47,8 @@ dependencies {
             exceptionFormat "short"
         }
     }
-}*/
-
-test {
-    useJUnitPlatform()
 }
 
 
-/*task positive_test(type: Test) {
-    useJUnitPlatform {
-        includeTags 'positive'
-    }
-}*/
+
+
